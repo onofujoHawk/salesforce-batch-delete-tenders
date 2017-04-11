@@ -69,6 +69,32 @@ global without sharing class DeleteArchivedTenders implements Database.Batchable
           EmailUtils.sendMessage(a, recordsProcessed);
       }
       
+        /** Method returning the string with all the fields of the object passed as parameter
+         *   param1: name of the object
+         *   @return: Stringof the object's fields separated with comma
+         */
+        public static String getObjectFields(String objName) {
+
+            String fieldnames = '';
+
+            Map < String, Schema.SObjectType > m = Schema.getGlobalDescribe();
+            Schema.SObjectType s = m.get(objName);
+            Schema.DescribeSObjectResult r = s.getDescribe();
+
+            //get fields
+            Map < String, Schema.SObjectField > fields = r.fields.getMap();
+            for (string field : fields.keySet()) {
+                if (fieldnames == '') {
+                    fieldnames = field;
+                } else {
+                    fieldnames += ',' + field;
+                }
+            }
+
+            return fieldnames;
+
+        }
+
     
 
 }
