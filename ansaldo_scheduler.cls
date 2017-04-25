@@ -1,5 +1,5 @@
 /**
- * @author f.onofrio@reply.it
+ * @author Onofrio Falco
  *
  * @date Apr 2017
  *
